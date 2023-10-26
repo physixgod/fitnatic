@@ -16,13 +16,15 @@ import utils.MyConnection;
 public class inscriptionCRUD {
 public void insertInscription(String email, String competition) {
     String evaluation = "Not evaluated yet";
+    double rating = -1.0;
 
     try {
-        String query = "INSERT INTO Inscription (email, competition, evaluation) VALUES (?, ?, ?)";
+        String query = "INSERT INTO Inscription (email, competition, evaluation,rating) VALUES (?, ?, ?, ?)";
         PreparedStatement preparedStatement = MyConnection.getInstance().getCnx().prepareStatement(query);
         preparedStatement.setString(1, email);
         preparedStatement.setString(2, competition);
         preparedStatement.setString(3, evaluation);
+        preparedStatement.setDouble(4, rating);
         int rowsAffected = preparedStatement.executeUpdate();
 
         if (rowsAffected > 0) {
@@ -34,4 +36,21 @@ public void insertInscription(String email, String competition) {
         ex.printStackTrace();
     }
 }
+ public void updateInscription(String email, double rating, String evaluation) {
+        String query = "UPDATE Inscription SET rating = ?, evaluation = ? WHERE email = ?";
+        try (
+            PreparedStatement preparedStatement = MyConnection.getInstance().getCnx().prepareStatement(query)) {
+            preparedStatement.setDouble(1, rating);
+            preparedStatement.setString(2, evaluation);
+            preparedStatement.setString(3, email);
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Inscription updated successfully.");
+            } else {
+                System.out.println("Failed to update Inscription.");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }

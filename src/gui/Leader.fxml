@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LeaderController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="739.0" prefWidth="1295.0" styleClass="mainFxmlClass">
+         <stylesheets>
+            <URL value="@addsport.css" />
+         </stylesheets>
+         <children>
+            <AnchorPane fx:id="prizeTxt" layoutX="5.0" layoutY="4.0" prefHeight="730.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <TextField fx:id="username" layoutX="446.0" layoutY="192.0" prefHeight="43.0" prefWidth="243.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
+                     <font>
+                        <Font name="Verdana" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="points" layoutX="733.0" layoutY="193.0" prefHeight="43.0" prefWidth="266.0" promptText="Points" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
+                     <font>
+                        <Font name="Verdana" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="addBtn" layoutX="1022.0" layoutY="191.0" mnemonicParsing="false" onAction="#saveSport" prefHeight="46.0" prefWidth="223.0" style="-fx-background-color: #0598ff; -fx-background-radius: 15;" text="Submit" textFill="WHITE">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <BarChart fx:id="leaderboard" layoutX="437.0" layoutY="306.0" prefHeight="400.0" prefWidth="716.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" stylesheets="@leader.css" />
+                    </yAxis>
+                  </BarChart>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="718.0" prefWidth="419.0">
+               <children>
+                  <ImageView fitHeight="602.0" fitWidth="419.0" layoutX="-3.0" layoutY="119.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/leader-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="backBtn" layoutY="1.0" prefHeight="127.0" prefWidth="1290.0" style="-fx-background-color: #999999;">
+               <children>
+                  <Label layoutX="492.0" layoutY="40.0" prefHeight="48.0" prefWidth="437.0" text="Leaderboard" textFill="#4b5961" wrapText="true">
+                     <font>
+                        <Font name="Times New Roman Bold" size="42.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="33.0" fitWidth="45.0" layoutX="90.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/back.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="returnBtn" layoutX="88.0" layoutY="48.0" mnemonicParsing="false" onAction="#goToMenu" prefHeight="31.0" prefWidth="38.0" style="-fx-background-color: transparent;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

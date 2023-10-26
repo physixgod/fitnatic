@@ -14,18 +14,29 @@ public class Inscription {
     private String useremail;
     private String competition;
     private String evaluation;   
+    private double rating;
 
-    public Inscription(int id, String useremail, String competition, String evaluation) {
+    public Inscription(int id, String useremail, String competition, String evaluation,int rating) {
         this.id = id;
         this.useremail = useremail;
         this.competition = competition;
         this.evaluation = evaluation;
+        this.rating = rating;
     }
 
-    public Inscription(String useremail, String competition, String evaluation) {
+    public Inscription(String useremail, String competition, String evaluation,int rating) {
         this.useremail = useremail;
         this.competition = competition;
         this.evaluation = evaluation;
+        this.rating = rating;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 
     public Inscription() {

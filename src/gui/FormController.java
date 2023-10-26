@@ -30,6 +30,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -197,6 +198,19 @@ public class FormController implements Initializable {
 
     @FXML
     private void evaluate1(ActionEvent event) {
+     try {
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("evaluation.fxml"));
+        Parent page = loader.load();
+        Stage evaluationStage = new Stage();
+        evaluationStage.initStyle(StageStyle.UNDECORATED);
+        Scene scene = new Scene(page);
+        evaluationStage.setScene(scene);
+        evaluationStage.show(); 
+        // Close the current stage (optional)
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
     }
 
     @FXML
@@ -207,8 +221,8 @@ public class FormController implements Initializable {
     emailDialog.setContentText("Email:");
 
     emailDialog.showAndWait().ifPresent(email -> {
-        
-        sendConfirmationEmail(email);
+        String msg="Dear participant,\n\nThank you for joining "+Competition1.getText()+"! Your participation is greatly appreciated, and we look forward to your active involvement. If you have any questions or need assistance, please don't hesitate to contact us.\n\nBest regards,\nThe Competition Team";
+        sendConfirmationEmail(email,msg);
         inscriptionCRUD ins = new inscriptionCRUD();
         ins.insertInscription(email,Competition2.getText());
         Alert alert = new Alert(AlertType.INFORMATION);
@@ -231,6 +245,20 @@ public class FormController implements Initializable {
 
     @FXML
     private void evaluate2(ActionEvent event) {
+        try {
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("evaluation.fxml"));
+        Parent page = loader.load();
+        Stage evaluationStage = new Stage();
+        evaluationStage.initStyle(StageStyle.UNDECORATED);
+        Scene scene = new Scene(page);
+        evaluationStage.setScene(scene);
+        evaluationStage.show(); 
+        // Close the current stage (optional)
+    } catch (IOException e) {
+        e.printStackTrace();
+    } 
+        
     }
 
     @FXML
@@ -241,8 +269,9 @@ public class FormController implements Initializable {
     emailDialog.setContentText("Email:");
 
     emailDialog.showAndWait().ifPresent(email -> {
-        
-        sendConfirmationEmail(email);
+         String msg="Dear participant,\n\nThank you for joining "+Competition2.getText()+"! Your participation is greatly appreciated, and we look forward to your active involvement. If you have any questions or need assistance, please don't hesitate to contact us.\n\nBest regards,\nThe Competition Team";
+         
+        sendConfirmationEmail(email,msg);
         inscriptionCRUD ins = new inscriptionCRUD();
         ins.insertInscription(email,Competition2.getText());
         Alert alert = new Alert(AlertType.INFORMATION);
@@ -252,7 +281,7 @@ public class FormController implements Initializable {
         alert.showAndWait();
     });
     }
-    public static void sendConfirmationEmail(String toEmail) {
+    public static void sendConfirmationEmail(String toEmail,String msg) {
       
         String host = "sandbox.smtp.mailtrap.io";
         String username = "633b3199b9af8f";
@@ -277,7 +306,7 @@ public class FormController implements Initializable {
             message.setFrom(new InternetAddress(fromEmail));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
             message.setSubject("Confirmation of Participation");
-            message.setText("Dear participant,\n\nThank you for joining our competition! Your participation is greatly appreciated, and we look forward to your active involvement. If you have any questions or need assistance, please don't hesitate to contact us.\n\nBest regards,\nThe Competition Team");
+            message.setText(msg);
 
           
             Transport.send(message);

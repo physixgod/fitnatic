@@ -5,6 +5,7 @@
  */
 package gui;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -35,6 +37,10 @@ public class MenuCompetitionController implements Initializable {
     private Button managesports;
     @FXML
     private Button competitions;
+    @FXML
+    private FontAwesomeIconView BACK;
+    @FXML
+    private Button led;
 
     /**
      * Initializes the controller class.
@@ -112,6 +118,50 @@ public class MenuCompetitionController implements Initializable {
                                             try {
  
         Parent page =FXMLLoader.load(getClass().getResource("form.fxml"));
+        Scene scene=new Scene(page);
+        Stage appStage =(Stage) ((Node)event.getSource()).getScene().getWindow();
+        appStage.setScene(scene);
+        appStage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+
+    }
+    }
+
+    private void backtomenu(ActionEvent event) {
+                                                    try {
+ 
+        Parent page =FXMLLoader.load(getClass().getResource("menufitnatic.fxml"));
+        Scene scene=new Scene(page);
+        Stage appStage =(Stage) ((Node)event.getSource()).getScene().getWindow();
+        appStage.setScene(scene);
+        appStage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+
+    }
+    }
+
+    @FXML
+    private void backtoMenu(MouseEvent event) {
+                                                           try {
+ 
+        Parent page =FXMLLoader.load(getClass().getResource("menufitnatic.fxml"));
+        Scene scene=new Scene(page);
+        Stage appStage =(Stage) ((Node)event.getSource()).getScene().getWindow();
+        appStage.setScene(scene);
+        appStage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+
+    }
+    }
+
+    @FXML
+    private void gotoleaderboard(ActionEvent event) {
+                                                        try {
+ 
+        Parent page =FXMLLoader.load(getClass().getResource("Leader.fxml"));
         Scene scene=new Scene(page);
         Stage appStage =(Stage) ((Node)event.getSource()).getScene().getWindow();
         appStage.setScene(scene);
